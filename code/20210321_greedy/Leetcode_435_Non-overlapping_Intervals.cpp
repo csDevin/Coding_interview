@@ -24,6 +24,7 @@ int eraseOverlapIntervals(vector<vector<int>>& intervals) {
         return 0;
     sort(intervals.begin(), intervals.end(), cmp);  //***排序选择了区间左侧，应该选择区间右侧。
     vector<int> record={intervals[0][0], intervals[0][1]};  //***在排序之前就把第一个区间当成初始值，非常有问题。
+                                                            //此外，record[0]没有用到，这里改成record=intervals[0][1]更精简。
     int count = 0;
     for(int i=1; i<m; i++)
     {
