@@ -1,5 +1,6 @@
 #include<vector>
 #include<iostream>
+#include<algorithm>
 using namespace std;
 
 /*
@@ -52,21 +53,21 @@ int main()
 }
 
 
-// 从高到低排序（参考的代码）（一个一个地插入到队伍中）
-vector<vector<int>> reconstructQueue(vector<vector<int>>& people) {
-    vector<vector<int>> new_queue;
-    sort(people.begin(), people.end(), [](vector<int> &a, vector<int> &b)
-    {return a[0]>b[0] || (a[0]==b[0] && a[1]<b[1]);});
-    // special
-    if(people.size()==1)
-        return people;
-    new_queue.push_back(people[0]);
-    for(int i=1; i<people.size(); i++)
-    {
-        if(new_queue.size()==people[i][1])
-            new_queue.push_back(people[i]);
-        else
-            new_queue.insert(new_queue.begin()+people[i][1], people[i]);
-    }
-    return new_queue;
-}
+// // 从高到低排序（参考的代码）（一个一个地插入到队伍中）
+// vector<vector<int>> reconstructQueue(vector<vector<int>>& people) {
+//     vector<vector<int>> new_queue;
+//     sort(people.begin(), people.end(), [](vector<int> &a, vector<int> &b)
+//     {return a[0]>b[0] || (a[0]==b[0] && a[1]<b[1]);});
+//     // special
+//     if(people.size()==1)
+//         return people;
+//     new_queue.push_back(people[0]);
+//     for(int i=1; i<people.size(); i++)
+//     {
+//         if(new_queue.size()==people[i][1])
+//             new_queue.push_back(people[i]);
+//         else
+//             new_queue.insert(new_queue.begin()+people[i][1], people[i]);
+//     }
+//     return new_queue;
+// }
