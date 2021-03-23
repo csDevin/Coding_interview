@@ -29,7 +29,7 @@ vector<int> twoSum(vector<int>& numbers, int target) {
             return {i+1,index+1};
         }
     }
-    return {i+1,index+1};
+    return {i+1,index+1};  //***变量定义成了for循环中的局部变量
 }
 
 // best code：使用双指针，一前一后，缩小搜索范围。
