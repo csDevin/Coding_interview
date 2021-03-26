@@ -16,6 +16,9 @@ vector<int> searchRange(vector<int>& nums, int target) {
 }
 
 // 方法2：使用二分查找（考虑left可能超出右边界，right可能超出左边界）
+// 时间复杂度：O(logn)
+// 空间复杂度：O(1)
+
 // 搜索左侧边界，当nums[mid]==target时，不return，而是另right=mid-1，向左搜索，直到right超出左边界，
 // 此时left处一定为最左边一个target的所在处。
 // 注意：最后判断nums[right]==target的时候，一定要先判断left是否超出右边界。
