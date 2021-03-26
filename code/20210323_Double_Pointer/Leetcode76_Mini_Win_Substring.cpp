@@ -1,4 +1,6 @@
-// 最小覆盖子串（滑动窗口）（hard）
+// 题目：最小覆盖子串（滑动窗口）（hard）
+// 时间复杂度：
+// 空间复杂度：
 /*
 解题思路
 map<char, int>：维护B串中每个字符的所需数量
@@ -28,6 +30,7 @@ using namespace std;
 
 
 // 自己的代码：使用map
+// 结构：need_map(t中的每一个字符分别还需要几个) + count(记录当前窗口是否包含t中所有字符，注意t中字符可重复，如AA则要包含两个A)
 string minWindow(string s, string t) {
     map<char, int> m;
     int left=-1, right=s.length(); //***致命错误，j=0，则j-i=0，right-left永远不可能小于j-i，所以最后的
@@ -88,8 +91,10 @@ string minWindow(string s, string t) {
                                                  // 错误地以为是从left截取到right，写成了s.substr(left, right);
 }
 
-// another code：使用大小为128的vector统计字符个数
-string minWindow(string s, string t) {
+
+
+// 自己的代码：使用大小为128的vector统计字符个数
+string minWindow1(string s, string t) {
     // map<char, int> m;
     vector<int> m(128, 1e5+1);
     int left=-1, right=s.length(); //***致命错误，j=0，则j-i=0，right-left永远不可能小于j-i，所以最后的
@@ -155,11 +160,111 @@ string minWindow(string s, string t) {
 
 
 
+// better code逻辑清晰：使用两个哈希表，一个维护s中字符的个数，另一个维护t中字符个数（不变）
+// 结构map_w(维护窗口中每个的字符的个数) + map_t（记录t中每个字符的个数）+ count（表示满足了多少个字符）
+string minWindow2(string s, string t) {
+    unordered_map<char,int> s_seq;
+    unordered_map<char,int> t_seq;
+    int sLen=s.size(), tLen=t.size();
+    int left=0, right=0, start=0, minLen=INT_MAX, count=0;
+
+    for(const auto &p:t)
+        t_seq[p]++;
+
+    while(right < sLen)
+    {
+        if(t.find(s[right])==t.npos)  //***此处可以写成了t_seq[s[right]]==0，不会报错，因为此处t_seq的元素不可能被减成0，它的元素在
+                                      //初始化之后就保持不变了，所以0能代表不存在的元素。
+        {
+            right++;
+            continue;
+        }
+        if(s_seq[s[right]] < t_seq[s[right]])
+            count++;
+        s_seq[s[right]]++;
+        right++;
+        while(count==tLen)
+        {
+            if(t.find(s[left])==t.npos)
+            {
+                left++;
+                continue;
+            }
+            if(s_seq[s[left]] == t_seq[s[left]])
+            {
+                count--;
+                if(right-left < minLen)
+                {
+                    start = left;
+                    minLen = right-left;
+                }
+            }
+            s_seq[s[left]]--;
+            left++;
+        }
+    }
+    if(minLen==INT_MAX)
+        return "";
+    else
+        return s.substr(start, minLen);
+}
+
+
+
+// better code逻辑清晰：map_t（表示当前字符还差多少个没有满足） + count（表示一共还有多少个字符没有满足）
+string minWindow3(string s, string t) {
+    vector<int> t_need(128, 0);  // 注意t_need带正负
+    int sLen=s.size(), tLen=t.size();
+    int left=0, right=0, count=tLen;  // count指还需要多少个元素
+    int start=0, minLen=INT_MAX;
+    for(const auto &p: t)
+        t_need[p]++;
+    
+    while(right < sLen)
+    {
+        if(t.find(s[right])==t.npos)  //***写成了t_need[s[right]]==0出错了，因为此处t_need的元素可能被减成0，所以0并不能代表不存在的元素。
+        {
+            right++;
+            continue;
+        }
+        if(t_need[s[right]] > 0)
+            count--;
+        t_need[s[right]]--;
+        right++;
+
+        while(count == 0)
+        {
+            if(right-left < minLen)
+            {
+                minLen = right-left;
+                start = left;
+            }
+            if(t.find(s[left])==t.npos)
+            {
+                left++;
+                continue;
+            }
+            if(t_need[s[left]] == 0)
+            {
+                count++;
+            }
+            t_need[s[left]]++;
+            left++;
+        }
+    }
+    if(minLen==INT_MAX)
+        return "";
+    else
+        return s.substr(start, minLen);
+}
+
+
 int main()
 {
     string a = "ADOBECODEBANC";
     string b = "ABC";
-    cout<<minWindow1(a, b);
+    cout<<minWindow3(a, b);
+    cout << a[2323];
     return 0;
 }
 
