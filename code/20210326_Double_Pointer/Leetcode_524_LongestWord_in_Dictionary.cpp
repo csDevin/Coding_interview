@@ -1,6 +1,8 @@
 // 题目：（Medium）
-// 时间复杂度：
-// 空间复杂度：
+// (better code分析)
+// 时间复杂度： O(n⋅xlogn+n⋅x) 。这里， n 表示列表 d 中字符串的数目，x 表示字符串的平均长度。
+// 排序需要花费 O(nlogn) 的时间， isSubsequence 函数需要花费 O(x)的时间去检查一个字符串是否是另一个字符串的子序列。
+// 空间复杂度： O(logn) 。排序平均需要 O(logn) 的空间。
 
 
 #include<string>
