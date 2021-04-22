@@ -14,6 +14,8 @@ struct ListNode{
 };
 
 // 自己的代码
+// 思路：需要创建两个新的指针new_head和np，创建新head名为new_head，head1和head2依次从往后扫描两个链表，np往后扫描用于构建新的new_head链表，
+// 小的赋值给np，np++。head1或head2当任何一个为空时，跳出循环，最后将p->next指向非空的一个指针，从而衔接上了后面所有的元素。
 ListNode* Merge(ListNode* pHead1, ListNode* pHead2) {
     ListNode* np, *nHead;
     if(pHead1==NULL)  //***忘记考虑特殊条件，导致越界
@@ -40,16 +42,16 @@ ListNode* Merge(ListNode* pHead1, ListNode* pHead2) {
         }
         np = np->next;
     }
-    // while(pHead1!=NULL){
-    //     np->next = pHead1;
-    //     pHead1 = pHead1->next;
-    //     np = np->next;
-    // }
-    // while(pHead2!=NULL){
-    //     np->next = pHead2;
-    //     pHead2 = pHead2->next;
-    //     np = np->next;
-    // }
+    while(pHead1!=NULL){
+        np->next = pHead1;
+        pHead1 = pHead1->next;
+        np = np->next;
+    }
+    while(pHead2!=NULL){
+        np->next = pHead2;
+        pHead2 = pHead2->next;
+        np = np->next;
+    }
     return nHead;
 }
 
