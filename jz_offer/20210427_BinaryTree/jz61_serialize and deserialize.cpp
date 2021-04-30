@@ -145,7 +145,6 @@ public:
     }
 
     TreeNode* deseri(string & data, int &p){
-        
         // 特殊情况，空结点
         if(data[p]=='#'){
             ++p;
