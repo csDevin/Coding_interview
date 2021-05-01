@@ -2,8 +2,7 @@
 using namespace std;
 
 int main(){
-    const char* c1 = "abcdefg";
-    const char *c2 = c1;
-    
+    int size = 9;
+    cout << round(size / 2.0) << endl;
     return 0;
 }
