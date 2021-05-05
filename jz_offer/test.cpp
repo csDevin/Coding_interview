@@ -2,8 +2,7 @@
 using namespace std;
 
 int main(){
-    stack<int> s;
-    s.push(1);
-    cout << s.top();
+    vector<vector<int>> vec;
+    vec.resize(10, vector<int>(4));
     return 0;
 }
