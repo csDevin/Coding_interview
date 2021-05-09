@@ -19,6 +19,14 @@ https://leetcode-cn.com/problems/edit-distance/solution/edit-distance-by-ikaruga
 - 替换：i元素与j元素不同，我们替换i元素为j元素`dp[i][j]=dp[i-1][j-1]+1`
 */
 
+#include<iostream>
+#include<vector>
+#include<map>
+#include<set>
+#include<algorithm>
+#include<string>
+using namespace std;
+
 int minDistance(string word1, string word2) {
     vector<vector<int >> dp(word1.size()+1, vector<int>(word2.size()+1, 0));  //***忘记初始化为0
     int Len1=dp.size();
