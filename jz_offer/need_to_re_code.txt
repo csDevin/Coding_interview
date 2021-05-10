@@ -17,3 +17,5 @@ jz 4
 dp：最小编辑距离
 
 dp：牛客jz52正则表达式匹配
+
+jz33_ugly_number: 使用最小堆priority_queue实现
