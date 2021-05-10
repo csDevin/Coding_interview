@@ -4,10 +4,19 @@
 辅助栈2：minstack用于存储当前入栈元素的后，当前栈中的最小值，也就是min(data_in, top(min_stack))，
         辅助栈初始化为INT_MIN。
 */
+#include<iostream>
+#include<vector>
+#include<map>
+#include<set>
+#include<stack>
+#include<queue>
+#include<string>
+#include<algorithm>
+using namespace std;
 
 class Solution1 {
 public:
-    Solution(){
+    Solution1(){
         min_stack.push(INT_MAX);
     }
     stack<int> x_stack;
