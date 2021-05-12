@@ -19,3 +19,5 @@ dp：最小编辑距离
 dp：牛客jz52正则表达式匹配
 
 jz33_ugly_number: 使用最小堆priority_queue实现
+
+jz_49_convert_string_to_integer (以leetcode 剑指offer67为准，难度更大，细节更多)，尝试用标准解法，而不是stringstream
