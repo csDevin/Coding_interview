@@ -24,7 +24,6 @@ public:
 */
 
 
-
 // leetcode解法
 // solution 1: stringstream ，细节更多
 class Solution {

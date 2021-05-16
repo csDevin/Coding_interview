@@ -1,3 +1,8 @@
+/* dfs and backtracking
+dfs: only need to count
+backtracking: the order of the count is needed
+*/
+
 /* template 1: permutations
 leetcode46, leetcode47, jz27 (string)
 */

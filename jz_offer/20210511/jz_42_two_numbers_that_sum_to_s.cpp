@@ -1,11 +1,4 @@
-#include<iostream>
-#include<vector>
-#include<map>
-#include<set>
-#include<stack>
-#include<queue>
-#include<string>
-#include<algorithm>
+#include<bits/stdc++.h>
 using namespace std;
 
 /* solution 1: 前后双指针法 (因为有序，所以可以使用双指针法)

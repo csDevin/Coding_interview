@@ -21,3 +21,9 @@ dp：牛客jz52正则表达式匹配
 jz33_ugly_number: 使用最小堆priority_queue实现
 
 jz_49_convert_string_to_integer (以leetcode 剑指offer67为准，难度更大，细节更多)，尝试用标准解法，而不是stringstream
+
+jz65_path_in_matrix (leetcode79_word_search) 需要总结这道经典的dfs模板和思路
+
+jz66_range_of_motion_of_robots 需要总结，何时使用回溯算法，何时使用深搜算法
+
+jz53：表示数值的字符串，思路很重要。
