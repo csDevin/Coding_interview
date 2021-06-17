@@ -1,6 +1,10 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+// 本题有防溢出判断，当前仅当反转后的数字: INT_MIN/10<=rev<=INT_MAX/10的时候，才可以继续推入各位数字，当rev==INT_MIN/10或INT_MAX/10的时候，
+// 说明仅仅剩下最后一位数字，因为输入数据需要满足带符号32位整数，所以最后一位数一定在{0,1,2}之间的，<7，所以INT_MIN/10<=rev<=INT_MAX/10的时候，
+// rev一定可以再推入数字。
+// int逆序：可以int转str然后使用*10+i的循环生成逆序int
 class Solution {
 public:
     /* 特殊情况
