@@ -10,7 +10,7 @@ struct ListNode {
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
- // 虚头+存后指前
+ // 虚头+存后指前+head->next指空·
 
 class Solution {
 public:
