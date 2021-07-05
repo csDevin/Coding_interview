@@ -9,7 +9,7 @@ struct ListNode {
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
-/* solution
+/* solution：迭代写法，需要哨兵
 重点：哨兵头节点：pre_head
 p1, p2指向两个链表，当p1<=p2则p->next=p1++；否则，反之；如果p1==nullptr，则p->p2，return，否则，反之。
 首先，我们设定一个哨兵节点 prehead ，这可以在最后让我们比较容易地返回合并后的链表。我们维护一个 prev 指针，
@@ -46,5 +46,45 @@ public:
             p->next = p2;
         }
         return vhead->next;
+    }
+};
+
+
+/* solution: 递归写法，不需要哨兵
+递归函数merge(l1, l2)函数能够合并两个链表，它的递归边界是l1和l2有任何一个为空。
+比较l1和l2的头节点，如果l2小，那一定是返回l2接上l2->next和l1链表和并的序列，否则，反之。
+*/
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+
+/* solution
+p1, p2指向两个链表，当p1<=p2则p->next=p1++；否则，反之；如果p1==nullptr，则p->p2，return，否则，反之。
+*/
+
+class Solution {
+public:
+    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
+        // if(l1==nullptr || l2==nullptr)  //***错了，任何一个为空应该返回另一个。
+            // return nullptr;
+        if(l1==nullptr)
+            return l2;
+        else if(l2==nullptr)
+            return l1;
+        else if(l1->val < l2->val){
+            l1->next = mergeTwoLists(l1->next, l2);
+            return l1;
+        }
+        else{
+            l2->next = mergeTwoLists(l1, l2->next);
+            return l2;
+        }
     }
 };
