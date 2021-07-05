@@ -1,13 +1,5 @@
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
- */
+
+
 
  /* solution: 逆序很重要，从个位往后推然后构建节点就可以了。
 思路：
@@ -21,6 +13,14 @@ p->next = new ListNode(sum % 10) + p=p->next
  */
 #include<bits/stdc++.h>
 using namespace std;
+
+struct ListNode{
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
 
 class Solution {
 public:
