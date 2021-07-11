@@ -18,7 +18,7 @@ int partition(vector<int> &nums, int l, int r)  // 单向扫描版本，pivot为
     {
         if(nums[j] < pivot)  //***小于写成了大于，j应该是遇到大的continue，遇到小的放到前面去
         {
-            swap(nums[++i], nums[j]);
+            swap(nums[++i], nums[j]);  // 这里的++i写的妙
         }
     }
     swap(nums[l], nums[i]);  //***nums[i]写成了i-1
