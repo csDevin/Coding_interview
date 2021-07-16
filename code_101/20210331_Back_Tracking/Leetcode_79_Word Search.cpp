@@ -20,7 +20,7 @@ void dfs(vector<vector<char>> &board, string word, vector<vector<int>> &visited,
     {
         int x_new = x + dir[i];
         int y_new = y + dir[i + 1];
-        if (x_new < 0 || x_new >= board.size() || y_new < 0 || y_new >= board[0].size())
+        if (x_new < 0 || x_new >= board.size() || y_new < 0 || y_new >= board[0].size())  // 判断边界
             //***x_new>=board.size()写成了x_new>board.size()
             continue;
         if (visited[x_new][y_new] == 0 && board[x_new][y_new] == word[depth + 1])
@@ -33,6 +33,7 @@ void dfs(vector<vector<char>> &board, string word, vector<vector<int>> &visited,
     }
     return;
 }
+
 bool exist(vector<vector<char>> &board, string word)
 {
     int xLen = board.size();
