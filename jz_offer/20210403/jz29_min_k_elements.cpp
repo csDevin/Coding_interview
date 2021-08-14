@@ -1,3 +1,6 @@
+#include<bits/stdc++.h>
+using namespace std;
+
 // jz29: 最小的K个数
 vector<int> GetLeastNumbers_Solution(vector<int> input, int k) {
     int len = input.size();

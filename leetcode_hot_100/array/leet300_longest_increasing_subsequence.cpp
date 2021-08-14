@@ -1,6 +1,9 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+int seed = time(0);
+cout<< rand();
+
 class Solution {
 public:
     // dp[i]表示到i位置为止的最长上升子序列的长度，该子序列不一定以nums[i]为结尾。
